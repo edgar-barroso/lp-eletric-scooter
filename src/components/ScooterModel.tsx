@@ -22,9 +22,13 @@ export default function ScooterModel({ isMobile = false }: ScooterModelProps) {
   // Animação de rotação suave e flutuação
   useFrame((state) => {
     if (modelRef.current) {
-      // Rotação constante
-      modelRef.current.rotation.y += rotationSpeed;
+      // Rotação dinâmica baseada no hover
+      const currentSpeed = hovered ? hoverRotationSpeed : rotationSpeed;
+      modelRef.current.rotation.y += currentSpeed;
 
+      // Animação de flutuação
+      const time = state.clock.getElapsedTime();
+      modelRef.current.position.y = yPosition + Math.sin(time * 2) * floatAmplitude;
     }
   });
 
