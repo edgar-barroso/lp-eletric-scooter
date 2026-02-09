@@ -1,0 +1,201 @@
+@import "tailwindcss";
+:root {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Color Variables */
+  --color-primary-light: #9AE0D3;
+  --color-primary-main: #35A7A0;
+  --color-primary-dark: #6EA9A8;
+  --color-secondary-light: #D8E6EF;
+  --color-secondary-main: #B4D8E4;
+  --color-secondary-dark: #73ADC1;
+  --color-accent-light: #DFF3FF;
+  --color-accent-main: #9ACDDE;
+  --color-accent-dark: #89C8DD;
+  --color-button-from: #9AE0D3;
+  --color-button-to: #43A678;
+  --color-bg-from: #EEFFFF;
+  --color-bg-to: #6EA9A8;
+  --color-text-primary: rgba(0, 0, 0, 0.8);
+  --color-text-secondary: rgba(0, 0, 0, 0.6);
+}
+
+.elipse-1 {
+  position: absolute;
+  background: linear-gradient(var(--color-primary-light), var(--color-primary-main));
+  box-shadow: var(--color-primary-dark) 100px 0px 2000px 20px;
+  border-radius: 50%;
+}
+
+.elipse-2 {
+  position: absolute;
+  background: linear-gradient(var(--color-secondary-light), var(--color-secondary-main));
+  border-radius: 50%;
+}
+
+.elipse-3 {
+  position: absolute;
+  background: linear-gradient(90deg, var(--color-accent-light), var(--color-accent-main));
+  box-shadow: var(--color-accent-main) 100px 0px 2000px 20px;
+  border-radius: 50%;
+}
+
+/* Apply full-page gradient to the document body */
+body {
+  background: linear-gradient(90deg, var(--color-bg-from) -10%, var(--color-bg-to) 120%);
+  min-height: 100vh;
+  /* Mobile optimizations */
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+}
+
+/* Mobile touch optimizations */
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Allow text selection for readable content */
+p, h1, h2, h3, h4, h5, h6, span {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* Mobile-friendly button styling */
+button, a {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Prevent zoom on input focus (iOS Safari) */
+input, textarea, select {
+  font-size: 16px;
+}
+
+/* Improve scroll performance */
+.scroll-smooth {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile viewport fixes */
+@media screen and (max-width: 768px) {
+  /* Prevent horizontal scroll */
+  html, body {
+    overflow-x: hidden;
+    position: relative;
+  }
+  
+  /* Improve touch targets */
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better mobile typography */
+  h1 { font-size: 2rem; line-height: 1.2; }
+  h2 { font-size: 1.75rem; line-height: 1.3; }
+  h3 { font-size: 1.5rem; line-height: 1.4; }
+  p { font-size: 1rem; line-height: 1.6; }
+  
+  /* Stack layout for mobile */
+  .mobile-stack {
+    flex-direction: column !important;
+  }
+  
+  /* Hide desktop-only elements */
+  .desktop-only {
+    display: none !important;
+  }
+  
+  /* Mobile-specific canvas optimizations */
+  canvas {
+    /* Improve rendering performance */
+    image-rendering: optimizeSpeed;
+    image-rendering: -webkit-optimize-contrast;
+    transform: translateZ(0);
+  }
+  
+  /* Reduce motion for better performance */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Landscape mobile adjustments */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  /* Adjust heights for landscape */
+  .landscape-adjust {
+    height: 100vh;
+    max-height: 100vh;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Enable GPU acceleration for better performance */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}
+
+/* Safe area handling for notched devices */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .safe-area-left {
+    padding-left: env(safe-area-inset-left);
+  }
+  
+  .safe-area-right {
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* Loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+
+
+
+@media (prefers-color-scheme: light) {
+
+}
