@@ -8,7 +8,7 @@ interface ScooterModelProps {
 }
 
 export default function ScooterModel({ isMobile = false }: ScooterModelProps) {
-  const { scene } = useGLTF('/src/assets/electric_scooter.glb');
+  const { scene } = useGLTF('/assets/electric_scooter.glb');
   const modelRef = useRef<THREE.Group>(null);
   const [hovered, setHovered] = useState(false);
 
